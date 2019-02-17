@@ -31,6 +31,8 @@ namespace CasaDoCodigo
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connectionString)
             );
+
+            services.AddTransient<IDataService, DataService>();
             #endregion
         }
 
@@ -58,9 +60,8 @@ namespace CasaDoCodigo
 
             //Cria uma instancia do ApplicationContext e cria o Database caso não tenha sido criado
             serviceProvider
-                .GetService<ApplicationContext>()
-                .Database
-                .Migrate();
+                .GetService<IDataService>()
+                .InicializaDB();
         }
     }
 }
