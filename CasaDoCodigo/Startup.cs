@@ -25,6 +25,9 @@ namespace CasaDoCodigo
         {
             services.AddMvc();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             #region Configuração com o Banco de Dados
             //Pega connection string do arquivo appsettings.json
             string connectionString = Configuration.GetConnectionString("Default");
@@ -62,6 +65,8 @@ namespace CasaDoCodigo
                     name: "default",
                     template: "{controller=Pedido}/{action=Carrossel}/{codigo?}");
             });
+
+            app.UseSession();
 
             //Cria uma instancia do ApplicationContext e cria o Database caso não tenha sido criado
             serviceProvider
