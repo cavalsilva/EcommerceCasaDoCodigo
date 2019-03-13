@@ -2,7 +2,8 @@
     ViewData["Tile"] = "Carrinho";
 }
 @model CarrinhoViewModel;
-
+<!--Quando inclui a tag form é criado um input com o RequestVerificationToken-->
+<form asp-action="carrinho" method="post"></form>
 
 <h3>Meu Carrinho</h3>
 <div class="panel panel-default">
@@ -89,6 +90,6 @@
 </div>
 
 @section Scripts
-{ 
+    {
     <script src="~/js/carrinho.js"></script>
 }
